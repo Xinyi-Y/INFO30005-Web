@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<section id="home">
+
+    <div> <img src = "/Vhome.jpg" alt = "ah"></div>
+    {{#if message}}
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{message}}
+</div>
+{{/if}}
+    <div class = "home-text">
+     <h1>Vendor Sign In</h1>
+      <form method="post" action="/vendor">
+            <input type="text" placeholder="Please Enter Van Name" name='email' id='email' value=""/>
+            <input placeholder="Please Enter Password" type="password" name='password' id='password' value=""/>
+  
+
+          <a href="/login"><input type="submit" value="Submit"></a>
+      </form>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+<section id = "yourcart">
+    <h1>{{title}}</h1>
+    {{# if orders }}
+    <div class="cart page">
+        <ul class="list-group">
+            {{# each orders }}
+            <li class="list-group-item clearfix">
+                <div class="items">
+                    <strong>Order Number: {{ this.orderNum }}</strong><br />
+                    {{!-- <em>{{{this.item.description}}}</em> --}}
+                </div>
+                <div class=" text-align:right">
+                    <strong>Total: ${{ this.cost }}</strong>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <hr>
+
+    {{ else }}
+    Your order list is empty.
+    {{/if}}
+</section>

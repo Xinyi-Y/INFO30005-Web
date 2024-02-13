@@ -1,0 +1,734 @@
+/* Control, text size, font, color scheme */
+:root {  
+    --text-big: 36px;
+    --text-medium: 22px;
+    --text-small: 16px;
+    --font-body: 'Lexend Mega', sans-serif;
+    --font-heading: 'Brush Script MT', cursive;
+    --color-dark: #401801;
+    --color-medium: #B2CCA9;
+    --color-light: #FEFFEC;
+    --color-grey: #EEEEEE;
+}
+
+/* Top of hierarchy*/
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-medium);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+header, footer {
+    color: var(--color-dark);
+    background-color: var(--color-medium);
+    text-align: center;
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+header {    /* sticks the header on the top of screen */
+    position: sticky;
+    top: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: var(--text-big);
+    color: var(--color-dark);
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none;  /* no formatting for anchors */
+}
+
+
+header h1 a {
+    color: var(--color-dark);
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+
+/* theMenu page showing all the snacks available*/
+#home img{
+    /* Add the blur effect */
+  
+    filter: blur(8px);
+    /* Center and scale the image nicely */
+    min-height:100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+}
+.home-text{
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.5); 
+    color: white;
+    font-weight: bolder;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 80%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#home-location button{
+    font-size: 100%;
+    font-weight: bold;
+    background-color: var(--color-medium);
+    font-size: var(--text-medium);
+    margin: 8px 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    width: 80%;
+    padding: 20px;
+}
+
+#home-location form button{
+    font-size: 100%;
+    font-weight: bold;
+    background-color: var(--color-medium);
+    font-size: var(--text-medium);
+    margin: 8px 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    width: 80%;
+    padding: 20px;
+}
+
+
+#foodList p {   
+    text-align: center;
+    flex-basis: 60%;
+}
+
+#foodList ul { 
+    padding: 0;
+}
+
+#foodList li {                      /* each individual food listing */
+    list-style-type: none;          /* switch off bullet-points */    
+    display: flex;
+    flex-direction: row;            /* image and text are side-by-side */
+    justify-content: flex-start;    /* text aligns left */
+    align-items: center;            /* and vertically aligns to center */
+    font-size: var(--text-small);
+    margin-bottom: 20px;
+    background-color: var(--color-grey);
+}
+
+#foodList img {     
+    width:  140px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%;     /*makes the images round */
+    object-fit: cover;
+}
+
+#getButton{       /* larger size of cart button and right aligned to make it more convenient for users */
+    position: absolute;
+    right: 90px;
+
+}
+
+#searchBar{
+    position: relative;
+}
+
+#getButton button{
+    padding: 20px;
+    position: absolute;
+    bottom: 0%;
+}
+
+#foodList a {   /*consists of food name and price */
+    flex-direction: row;    
+    align-items: center;    
+    color: var(--color-dark);
+}
+#foodList li a{
+    width: 100%;
+}
+#foodList li form button{
+    position: relative;
+    background-color: var(--color-medium);
+    font-size: var(--text-medium);
+    color: var(--color-grey);
+    padding: 20px;
+    width: 100%;
+    font-size: 80%;
+    transition-duration: 0.5s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+#foodList li a:hover {   /*consists of food name and price */
+    background-color: var(--color-medium);
+}
+       
+form {       
+    display: flex;
+    justify-content: left;
+}
+
+form input {
+    font-size: var(--text-medium);
+    width: 50%;
+}
+
+form input[type$=submit] {  /* submit button - note use of attribute selector */
+    background-color: var(--color-medium);
+    width: auto;
+    font-size: 80%;
+    
+}
+
+form span.bigScreen {   /* on small screens, hide some of the wording */
+    display: none;
+}
+
+#loginform {
+    text-align: center;
+}
+
+#signUpform {
+    text-align: center;
+    margin: auto
+}
+
+/* the page showing details about an individual food */
+/* css code inspired by lecture code */
+#showsnack-details {  /* picture, description and table */
+    display: flex;
+    flex-direction: column;
+}
+
+#showsnack-text {
+    padding: 10px;
+}
+
+#showsnack img {          /* centre the image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#showsnack p {            /* the "description" text */
+    font-size: var(--text-small);
+    text-align: center;
+}
+
+#showsnack table {        /* the table of nutritional data */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+    border: solid grey 1px;
+}
+
+
+#showsnack td {   /* the first td in each row of the table */
+    width: 25%
+}
+
+
+
+
+
+/* the page showing details about an individual order */
+#showOrder h1 {
+    font-size: 5px;
+}
+
+#showorder table{
+    width: 100%;
+    border-collapse: collapse;
+}
+#showorder .snack-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+#showorder th {
+    font-size: 100%;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    background: #bd8eaa;
+}
+
+#showorder #productTable {
+    max-width: 100%;
+}
+
+#showorder #product {
+    width: 30%;
+}
+#showorder #quantity {
+    width: 20%;
+}
+#showorder #price {
+    width: 20%;
+}
+#showorder #action {
+    width: 30%;
+}
+
+#showorder td {
+    text-align: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid #ddd;
+}
+/* responsive to the size of the screen */
+#showorder td img {
+    width: 16vw;
+    height: 16vw;
+    /* margin-right: 30px; */
+}
+
+#showorder td form button{
+    background-color:white;
+    width: auto;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 90%;
+}
+
+#showorder td form button:hover {
+    background-color: #a9cfb1;
+    color: white;
+  }
+
+/*
+@media screen and (max-width:812px) {	
+    #showorder table{
+        width: 35%;
+        border-collapse: collapse;
+    }
+    #showorder th {
+        font-size: 40%;
+        text-align: center;
+        padding: 5px;
+        color: #fff;
+        background: #bd8eaa;
+    }
+}
+*/
+
+@media screen and (max-width:812px) {	/* for phone sized screens */
+    #showorder {
+        flex-direction: column;
+        font-size: 80%;
+    }
+    #showorder h1{
+        font-weight: bold;
+        font-size: 80%;
+    }
+
+    #showorder table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    #showorder th {
+        font-size: 80%;
+        text-align: center;
+        padding: 5px;
+        color: #fff;
+        background: #bd8eaa;
+    }
+    #showorder td {
+        font-size: 80%;
+        text-align: center;
+        padding: 15px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    #showorder .bt {
+        width: auto;
+        font-size: 80%;
+    }
+    #showorder td form button {
+    width: auto;
+    font-size: 80%;
+    }
+}
+
+
+
+
+
+/* the page showing all orders of the user */
+/* the page showing all orders of the user */
+#orderList h1 {
+    font-size: 25px;
+}
+#orderList #order-grid-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr, 5fr;
+    grid-gap: 1rem;
+    grid-template-areas: 
+        "yourorder yourorder"
+        "Outstanding Fulfilled"
+}
+#orderList #left-half {
+    grid-area: Outstanding;
+}
+#orderList #right-half {
+    grid-area: Fulfilled;
+}
+#orderList #YourOrder {
+    grid-area: yourorder;
+}
+
+/* the page showing details about vaninfo*/
+#vans-detail h1 {
+    font-size: 80%;
+}
+
+#vans-detail table{
+    width: 100%;
+    border-collapse: collapse;
+}
+#vans-detail .vendor-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+#vans-detail th {
+    font-size: 100%;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    background: #bd8eaa;
+}
+#vans-detail td {
+    text-align: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid #ddd;
+}
+#vans-detail td img {
+    width: 150px;
+    height: 100px;
+    margin-right: 40px;
+}
+
+#vans-detail form button{
+    background-color: white (207, 185, 185);
+    width: auto;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 80%;
+}
+
+#vans-detail form button:hover {
+    background-color: #6ac47d;
+    color: white;
+}
+
+#plot-vans button{
+    font-size: 100%;
+    font-weight: bold;
+    background-color: var(--color-medium);
+    font-size: var(--text-medium);
+    margin: 8px 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    padding: 20px;
+}
+
+@media screen and (max-width:812px) {	/* for phone sized screens */
+    #vans-detail {
+        flex-direction: column;
+    }
+    #vans-detail table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    #vans-detail th {
+        font-size: 80%;
+        text-align: center;
+        padding: 5px;
+        color: #fff;
+        background: #bd8eaa;
+    }
+    #vans-detail td {
+        font-size: 80%;
+        text-align: center;
+        padding: 15px 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    #vans-detail form button{
+        width: auto;
+        font-size: 80%;
+    }
+}
+
+
+
+
+
+/*responsive design from lecture*/
+
+/* Modal (background) */
+.modal-background {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+/* Modal (content) */
+.modal-foreground {
+    background-color: var(--color-medium);
+    text-align: center;
+    margin: 30% auto; /* 15% from the top and centered */
+    width: 50%; 
+  }
+.topnav {
+    background-color: var(--color-medium);
+    overflow: visible;
+    font-family: var(--font-heading);
+    font-size: 50px;
+    height: 55px;
+    grid-row:0.5;
+    grid-column:1/-1;
+    }
+  
+  /* Style the links inside the navigation bar */
+.topnav a {
+    float: right;
+    color: var(--color-dark);
+    text-align: center;
+    text-decoration: none;
+    font-size: 60%;
+    font-family:var(--font-body);
+    margin: 0 10px;
+  }
+.topnav p{
+    float: right;
+    color: var(--color-dark);
+    text-align: center;
+    text-decoration: none;
+    font-size: 60%;
+    font-family:var(--font-body);
+    margin: 0 10px;
+}
+  /* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+.topnav h1{
+    text-align: left;
+    font-size: var(--text-large);
+    color: var(--color-dark);
+    margin-top: 0;
+  }
+  
+  /* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: pink;
+  }
+  
+.search form{
+    display:inline;
+
+}
+.search form button{
+    background-color: var(--color-medium);
+    width: auto;
+    font-size: 80%;
+}
+
+.bt button{
+    background-color: var(--color-medium);
+    width: auto;
+    font-size: 80%;
+}
+
+.allOrderTb form button {
+    background-color: var(--color-medium);
+    padding: 20px;
+    width: 100%;
+    font-size: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+
+/* Responsive Design */
+
+@media screen and (min-width: 1100px) {	/* for tablet-sized screens */
+
+
+    #foodList ul {      /* flow food list into two columns */
+        column-count: 2;
+    }
+
+    #showsnack-details {
+        flex-direction: row; /* now picture and text are side-by-side */
+    }
+
+    #showsnack-picture, #showsnack-text {   /* divide the sceren into two halves */
+        flex-basis: 50%;
+    }
+
+    #showsnack p#description {        /* increase font size of food description */
+        font-size: var(--text-medium);
+        text-align: left;
+    }
+    .search {
+        grid-column: 2/-1;
+        grid-row: 2;
+      }
+    .filter {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .filter form {
+        width: 100%;
+        margin-bottom:25px;
+      }
+
+
+}
+@media screen and (max-width: 1100px){
+    .topnav {
+        font-size: 30px;
+        height: 50px;
+      }
+    .topnap a{
+        font-size: 30%;
+    }
+    .search {
+     grid-row: 3;
+     grid-column: 1/-1;
+    }
+    .filter {
+        grid-column: 1/-1;
+        grid-row: 2;
+    }
+    .filter form {
+        width: 20%;
+        display: inline-block;
+      }
+}
+
+@media screen and (min-width: 1200px) {	/* for big screens */
+
+    #foodList ul {      /* flow food list into three columns */
+        column-count: 2;
+    }
+    .search {
+        grid-column: 2/-1;
+        grid-row: 2;
+      }
+    .filter {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .filter form {
+        width: 100%;
+        margin-bottom:25px;
+      }
+
+}
+
+@media screen and (min-width: 1600px) {	/* for very big screens */
+
+    #foodList ul {      /* flow food list into four columns */
+        column-count:3;
+    }
+    .search {
+        grid-column: 2/-1;
+        grid-row: 2;
+      }
+    .filter {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .filter form {
+        width: 100%;
+        margin-bottom:25px;
+      }
+
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+
+
+  .filter form button {
+    position: relative;
+    background-color: var(--color-medium);
+    font-size: var(--text-medium);
+    color: var(--color-grey);
+    padding: 20px;
+    width: 100%;
+    font-size: 80%;
+    transition-duration: 0.5s;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .filter form button:after {
+    background: var(--color-light);
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 1s
+  }
+  
+  .filter form button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+
+#showorder .total{
+    font-size: var(--text-medium);
+    text-align:right;
+}
+
+#coords{
+    min-height: 400px;
+    text-align: center;
+}
+

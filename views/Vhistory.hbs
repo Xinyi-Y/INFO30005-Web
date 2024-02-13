@@ -1,0 +1,33 @@
+<section id="Vhistory">
+    <div class="wrapper">
+    <div class = "vname">
+        <a href="/vendor/operate"> Back </a>
+        <h1>{{vendorname}}</h1>
+    </div>
+    <div class = "filter">
+            <form action="/vendor/history" method="get">
+                <button>All Time</button>
+            </form>
+            <form action="/vendor/search/dis" method="post">
+                <button name="disFilter" value="dis">Discounted</button>
+            </form>
+            <form action="/vendor/search/notdis" method="post">
+                <button name="notdisFilter" value="notdis">Not Discounted</button>
+            </form>
+    </div>
+    <div class="search">
+    <form method="post" action="/vendor/history/search">
+        <input type="search" size="10" name="userName" placeholder="Search by UserName.." pattern="[A-Za-z]*" title="letters only" autofocus>
+        <input type="submit" value="Search">
+    </form>
+
+
+
+    {{#isfOrder orders}}{{/isfOrder}}
+    {{#isdOrder orders}}{{/isdOrder}}
+
+    </div>
+    </div>
+
+    
+</section>

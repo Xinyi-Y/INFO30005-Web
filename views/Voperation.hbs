@@ -1,0 +1,90 @@
+<section id="operation">
+
+
+    <div class="wrapper">
+        <div class = "outstanding">
+
+            <h1>Outstanding Orders</h1>
+
+        </div>
+    <div class="oOrder">
+
+        {{#isoOrder orders}}{{/isoOrder}}
+        
+
+    </div>
+        
+     
+        
+        <div class="detail">
+            <form method="get" action="/vendor/location">
+                <button name="back">Back</button>
+            </form>
+         <h1>Order Detail</h1>
+            <form method="get" action="/vendor/history">
+                <button name="history">History</button>
+            </form>
+        </div>
+        <div class ="dOrder">
+            {{#if thisOrder}}
+                <h1> Order{{thisOrder.orderNum}} </h1>
+                
+
+    <section id="showorder-details">
+        <section id="order-content">
+            <h1>Order Content</h1>
+            {{#giveTime thisOrder}}{{/giveTime}}
+            
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                {{#each foodItem}}
+                <tr>
+                  
+                    <td>  
+                        <div class ='snack-info'>
+                            <div>
+                                <p>{{this.foodName}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{this.quantity}}</td> 
+                    <td>{{this.price}}</td>
+                    
+                </tr>
+                {{/each}}
+            </table>
+        </section>
+
+        <section id="showorder-text">
+            <h1>Order info</h1>
+            <table>
+                <tr><td>Order status:</td><td>{{thisOrder.status}}</td></tr>
+                <tr><td>Total Price:</td><td>{{thisOrder.cost}}</td></tr>
+                <tr><td>User:</td><td>{{thisOrder.userId}}</td></tr>
+                <tr><td>Vendor:</td><td>{{thisOrder.vendorId}}</td></tr>
+                <tr><td>Order time:</td><td>{{thisOrder.timeOrdered}}</td></tr>
+                {{#if thisOrder.discounted}}<tr style="color:green"><td>Discount:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>Discount:</td><td>&#10007</td></tr>{{/if}}
+            </table>
+        </section>
+
+
+
+    </section>
+            {{/if}}
+        </div>
+     <div class="pickup">
+
+        <h1>PickUp Orders</h1>
+        </div>
+        <div class = "pOrder">
+            {{#ispOrder orders}}{{/ispOrder}}
+        </div>
+    </div>
+    
+
+        
+</section>

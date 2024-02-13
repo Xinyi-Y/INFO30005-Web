@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function logout(){
+            localStorage.clear();
+            document.getElementById("logoutform").submit();
+                        
+        }        
+    </script>
+</head>
+
+<section id="geoloc">
+
+    <div> <img src = "/Vhome.jpg" alt = "ah"></div>
+
+    <div class = "home-text">
+     <h1>{{username}} Location</h1>
+      <form method="post" action="/vendor/setaddress">
+      {{#if location}}
+            <input type="text" placeholder="Current: {{this.location}}" name='address' id='address' value=""/>
+        {{else}}
+            <input type="text" placeholder="Please Enter Current Address" name='address' id='address' value=""/>
+        {{/if}}
+            <a href="/vendor/setaddress"><input type="submit" value="Submit"></a>
+      </form>
+<form method="get" action="/vendor/operate">
+        <button name="Open" onclick="getLocation()">Open For Business</button>
+</form>
+
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    console.log("AA");
+                    navigator.geolocation.getCurrentPosition(success,failure);
+                } else { 
+                    alert('doesnt support geo location');
+                }
+                }
+            function failure(){
+                alert('failure');
+            }
+            function success(position) {
+                $.ajax({
+                    url: '/vendor/geo',
+                    type: 'POST',
+                    data: {"lat" : position.coords.latitude, "long":  position.coords.longitude},
+                    success: function(data) {
+                    alert("Current Location Noted");
+                    }
+                });
+            }
+        </script>
+        <form action="/vendor/logout" method="post">
+            <button name="LogOut" value="LogOut" >LogOut</button>
+        </form>
+    </div>
+</section>

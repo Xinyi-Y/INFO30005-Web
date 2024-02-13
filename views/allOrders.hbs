@@ -1,0 +1,30 @@
+<section id="showorder">
+    <div class = "allOrders">
+        <div class="topnav" id="myTopnav">
+            <a href="/">Home</a>
+            <a href="/">LogIn</a>  
+            <a href="/customer/order" class="active">MyOrdre</a>
+            <h1> Food Van App</h1>
+        </div>
+        <div class = "allOrderTb">
+            <table>
+                <tr>
+                    <th>Orders Num</th>
+                    <th>Status</th>
+                    <th>price</th>
+                    <th></th>
+                </tr>
+                {{#each orders}}
+                <tr>
+                    <td>{{this.orderNum}}</td>
+                    <td>{{this.status}}</td>
+                    <td>{{this.cost}}</td>
+                    <td><form action="/customer/order/{{this.orderNum}}" method="get">
+                        <button name="Detail" value="Detail">Detail</button>
+                    </form></td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</section>

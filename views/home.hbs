@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<section id="home">
+    <div> <img src = "/home.jpg" alt = "ah"></div>
+
+</div>
+    <div class="home-text">
+        <h1>Welcome To Our FoodVan App</h1>
+        <p>Here Is A Demo On Tasty Trailer :D</p>
+    </div>
+    
+</section>
+
+<section id="home-location">
+
+        <script>
+            function getLocation() {
+                
+                if (navigator.geolocation) {
+                    console.log("AAA");
+                    navigator.geolocation.getCurrentPosition(success);
+                } else { 
+                    alert('doesnt support geo location');
+                }
+            }
+
+            function success(position) {
+               lat = position.coords.latitude
+               console.log(lat)
+               lng = position.coords.longitude
+               console.log(lng)
+               ul = "/customer/geo/"+lat+"/"+lng
+               console.log(ul)
+               window.location.href = ul;
+                //document.theform.action="/customer/geo";
+                //document.theform.submit();
+                //window.location.href="http://localhost:3000/customer/geo";
+                //window.navigate("http://localhost:3000/vendor/geo"); 
+            }
+        </script>
+
+        <div class="vans">
+            <button name="vans" onclick="getLocation()">Vans Nearby</button>
+            
+            <form action="/customer/login/" method="get">
+                <button name="login" value="login">Login</button>
+            </form>
+        </div>
+
+        
+        
+</section>
+
+
+

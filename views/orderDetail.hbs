@@ -1,0 +1,132 @@
+<section id="showorder">
+        <script>
+            function myFunction(val,typ)
+            {   
+                deadline = new Date('{{thisOrder.timeOrdered}}')
+                status = '{{thisOrder.status}}'
+                const now = new Date()
+                var a = (Date.parse(now) - Date.parse(deadline)) /60/1000;
+                console.log("a")
+                console.log(a)
+                if(status=='outstanding'){
+                    if(a<=10){
+                        // change order
+                        if(typ == 10){
+                            alert("Your order has been changed");
+                            window.location.href="/customer/changeOrder/{{thisOrder.orderNum}}";
+                        }
+                        // cancle order
+                        if(typ == 20){
+                            alert("Your order has been cancelled");
+                            window.location.href="/customer/cencleOrder/{{thisOrder.orderNum}}";
+                        } 
+                    }
+                    else{
+                        alert("Order exceeds 10 minutes");
+                        val.setAttribute("disabled", true); 
+                    }
+                }
+                else if(status=='ready'||status=='fulfilled'){
+                    alert("Your order is finished");
+                    val.setAttribute("disabled", true); 
+                }
+                else if(status=='cancelled'){
+                    alert("Your order has been cancelled");
+                    val.setAttribute("disabled", true);
+                }
+                else if(status=='changed'){
+                    alert("Your order has been changed");
+                    val.setAttribute("disabled", true);
+                }    
+            }
+            function checkState(val)
+            {   
+                deadline = new Date('{{thisOrder.timeOrdered}}')
+                status = '{{thisOrder.status}}'
+                const now = new Date()
+                var a = (Date.parse(now) - Date.parse(deadline)) /60/1000;
+                console.log(status)
+                if(status=='outstanding'){
+                    if(a<15){
+                        alert("Your order is not completed");
+                    }
+                    else{
+                        alert("Sorry for late, but you'll get a 20% discount");
+                        window.location.href="/customer/giveDiscount/{{thisOrder.orderNum}}";
+                    }
+                }
+                else if(status=='ready'){
+                        alert("Thanks for your order");
+                        window.location.href="/customer/menu";
+                }
+                else if(status=='cancelled'){
+                    alert("Your order has been cancelled");
+                    val.setAttribute("disabled", true);
+                }
+                else if(status=='changed'){
+                    alert("Your order has been changed");
+                    val.setAttribute("disabled", true);
+                }
+                else if(status=='fulfilled'){
+                    alert("Your order has been fulfilled");
+                    val.setAttribute("disabled", true);
+                }
+            }
+        </script>
+
+    <div class="topnav" id="myTopnav">
+        <a href="/">Home</a>
+        <a href="/customer/menu" class="active">Menu</a>   
+        <a href="/customer/order" class="active">MyOrder</a>
+        <h1> Food Van App</h1>
+    </div>
+
+    </br>
+    <h1> Order{{thisOrder.orderNum}} </h1>
+
+    <div class="showorder-details">
+        <div class="order-content">
+            <h1>Order Content</h1>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                {{#each foodItem}}
+                <tr>
+                    <td>  
+                        <div class ='snack-info'>
+                            <img src="{{this.imageurl}}">
+                            <div>
+                                <p>{{this.foodName}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{this.quantity}}</td> 
+                    <td>{{this.price}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+
+        <div class="showorder-text">
+            <h1>Order info</h1>
+            <table>
+                <tr><td>Order status:</td><td>{{thisOrder.status}}</td></tr>
+                <tr><td>Total Price:</td><td>{{thisOrder.cost}}</td></tr>
+                <tr><td>User:</td><td>{{thisOrder.userId}}</td></tr>
+                <tr><td>Vendor:</td><td>{{thisOrder.vendorId}}</td></tr>
+                <tr><td>Order time:</td><td>{{thisOrder.timeOrdered}}</td></tr>
+                {{#if thisOrder.discounted}}<tr style="color:green"><td>Discount:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>Discount:</td><td>&#10007</td></tr>{{/if}}
+                
+            </table>
+            <div align="center" class="bt">
+                <button type="button" onclick="checkState(this)">Take meal!</button>
+                <button type="button" onclick="myFunction(this,10);">Change Order</button>
+                <button type="button" onclick="myFunction(this,20);">Cancle</button>
+            </div>
+        </div>
+    </div>
+
+</section>

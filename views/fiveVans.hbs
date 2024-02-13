@@ -1,0 +1,113 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=\, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""
+        />
+        <script
+        src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""
+        ></script>
+
+        <title>Nearest Vans using map</title>
+
+    </head>
+
+    {{! include the css}}
+    <style>
+        #issMap {
+            height: 200px;
+        }
+    </style>
+
+    <div id="issMap"></div> 
+    
+    <script>
+        function flash() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success);
+            } 
+            else{ 
+                alert('doesnt support geo location');
+            }
+        }
+        function success(position) {
+               lat = position.coords.latitude
+               lng = position.coords.longitude
+               ul = "/customer/geo/"+lat+"/"+lng
+               window.location.href = ul;
+                //document.theform.action="/customer/geo";
+                //document.theform.submit();
+                //window.location.href="http://localhost:3000/customer/geo";
+                //window.navigate("http://localhost:3000/vendor/geo"); 
+            }
+
+        // function to plot each van
+        function plotvans(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10) {
+            alert("map display")
+            const mymap = L.map('issMap').setView([0, 0], 6);
+            const attribution =
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+            const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            const tiles = L.tileLayer(tileUrl, { attribution });
+            tiles.addTo(mymap);
+            
+            L.marker([p1, p2]).addTo(mymap);
+            L.marker([p3, p4]).addTo(mymap);    
+            L.marker([p5, p6]).addTo(mymap);    
+            L.marker([p7, p8]).addTo(mymap);    
+            L.marker([p9, p10]).addTo(mymap);        
+        } 
+    </script>
+
+    <div id="plot-vans">
+        <button type="button" onclick="plotvans({{positions}})">Show vans on map</button>
+    </div>
+
+    <div id="vans-detail">      
+            <table>
+                <tr>
+                    <th>Van Name</th>
+                    <th>Status</th>
+                    <th>Start Order</th>
+
+                </tr>
+                {{#each vendors}}
+                <tr>
+                    <td>  
+                        <div class ='vendor-info'>
+                            <img class = "browsePage" src="/van{{@index}}.jpg">
+                            <div>
+                                <p>{{this.vendorName}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{this.status}}</td> 
+                    <td>    
+                            <form action="/customer/updateTempVendorId/{{this.vendorId}}" method="get">
+                            <button name="ordernow" value="ordernow">Order Now</button>
+                            </form>
+                    </td>    
+                </tr>
+                {{/each}}
+            </table>
+            <button type="button" onclick="flash()">Relocation</button>
+    </div> 
+
+</html>
+
+
+
+
+
+
+
+
+

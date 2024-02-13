@@ -1,0 +1,35 @@
+<section id="showsnack">
+    <div class="topnav" id="myTopnav">
+        {{#if username}}
+        <a href= "/customer/order"> Hi, {{username}}</a> 
+        {{else}}
+        <a href="/customer/login">LogIn</a>
+        {{/if}}
+        <a href="/">Home</a>
+        <a href="/customer/menu">Menu</a> 
+        <h1> Food Van App</h1>
+    </div>
+
+    </br>
+    <h1> {{thisfood.foodName}} </h1>
+
+    <section id="showsnack-details">
+        <section id="showsnack-picture">
+            <img class="detailsPage" src={{thisfood.imageurl}} >
+        </section>
+
+        <section id="showsnack-text">
+            <p id="description">{{thisfood.description}}</p>
+
+            <table>
+                <tr><td>calories:</td><td>{{thisfood.calories}}</td></tr>
+                {{#if thisfood.organic}}<tr style="color:green"><td>Organic:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>Organic:</td><td>&#10007</td></tr> {{/if}}
+                {{#if thisfood.vegan}}<tr style="color:green"><td>Vegan:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>Vegan:</td><td>&#10007</td></tr>{{/if}}
+                {{#if thisfood.glutenfree}}<tr style="color:green"><td>GlutenFree:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>GlutenFree:</td><td>&#10007</td></tr>{{/if}}
+            </table>
+
+
+        </section>
+    </section>
+
+</section>

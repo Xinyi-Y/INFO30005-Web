@@ -1,0 +1,42 @@
+<section id="loginform">
+    <div class="topnav" id="myTopnav">
+        <a href="/">Home</a>
+        <a href="/customer/menu">Menu</a>
+        <h1> Food Van App</h1>
+    </div>
+    <h1> LogIn</h1>
+    {{#if message}}
+    <div class="alert">
+  {{message}}
+</div>
+{{/if}}
+    <div>
+      <form id = "login_bar" method="post" action="/customer/login"> 
+
+                <table align="center" >
+          <tr>
+            <td>Email:</td>
+            <td> <input placeholder="Email" name='email' id='email' value=""/></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input placeholder="********" type="password" name='password' id='password' value=""/></td>
+          </tr>
+          <tr>
+            <td colspan="2"><center>
+              <a href="/login">
+              <input type="submit" value="Submit">
+              </a>
+              </center></td>
+          </tr>
+        </table>
+
+      </form>
+    </div>
+
+    <div class="sign">
+        <a href = "/customer/signup">Don't have an account? Click Me!</a>
+    </div>
+
+
+</section>

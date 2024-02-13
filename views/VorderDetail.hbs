@@ -1,0 +1,51 @@
+<section id="showorder">
+    <div class="topnav" id="myTopnav">
+        <a href="/vendor/history">Back</a>
+    </div>
+
+    </br>
+    <h1> Order{{thisOrder.orderNum}} </h1>
+
+    <section id="showorder-details">
+        <section id="order-content">
+            <h1>Order Content</h1>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                {{#each foodItem}}
+                <tr>
+                  
+                    <td>  
+                        <div class ='snack-info'>
+                            <img src="{{this.imageurl}}">
+                            <div>
+                                <p>{{this.foodName}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{this.quantity}}</td> 
+                    <td>{{this.price}}</td>
+                    
+                </tr>
+                {{/each}}
+            </table>
+        </section>
+
+        <section id="showorder-text">
+            <h1>Order info</h1>
+            <table>
+                <tr><td>Order status:</td><td>{{thisOrder.status}}</td></tr>
+                <tr><td>Total Price:</td><td>{{thisOrder.cost}}</td></tr>
+                <tr><td>User:</td><td>{{thisOrder.userId}}</td></tr>
+                <tr><td>Vendor:</td><td>{{thisOrder.vendorId}}</td></tr>
+                <tr><td>Order time:</td><td>{{thisOrder.timeOrdered}}</td></tr>
+                {{#if thisOrder.discounted}}<tr style="color:green"><td>Discount:</td><td>&#10003</td></tr>{{else}}<tr style="color:red"><td>Discount:</td><td>&#10007</td></tr>{{/if}}
+            </table>
+        </section>
+
+    </section>
+
+</section>

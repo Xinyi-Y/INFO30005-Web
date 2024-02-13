@@ -1,0 +1,65 @@
+<script >
+  function checkPass(p){
+    if(p.match(/([a-z])+/)){
+      if(p.match(/([A-Z])+/)){
+        if(p.match(/([0-9])+/)){
+          return 1;
+        }
+      } 
+    }
+  return 0;
+  }
+  function check(){
+    p = document.getElementById("password");
+    if(p.value==0){
+      alert("Password can not be null");
+      return false
+    }
+    
+    if(p.value.length<8){
+      alert("least 8 characters");
+      return false
+    }
+    if(checkPass(p.value)==0){
+      alert("least one alphabet character and one numberical digit");
+      return false
+    }
+
+    return true;
+  }
+
+
+</script>
+<section id="signUpform">
+      <div class="topnav" id="myTopnav">
+        <a href="/">Home</a>
+        <a href="/customer/menu">Menu</a>
+        <h1> Food Van App</h1>
+    </div>
+
+    <form method="post" action="/customer/signup" onsubmit="return check()">
+        <table align="center" >
+          <tr>
+            <td>Email:</td>
+            <td> <input placeholder="username" name='email' id='email' value=""/></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input placeholder="***************" type="password" name='password' id='password' value=""/></td>
+          </tr>
+          <tr>
+            <td>Family Name</td>
+            <td><input placeholder="family name" name='nameFamily' id='nameFamily' value=""/></td>
+          </tr>
+          <tr>
+            <td>Given Name</td>
+            <td><input placeholder="given name" name='nameGiven' id='nameGiven' value=""/></td>
+          </tr>
+          <tr>
+            <td colspan="2"><center><input type="submit" value="Submit" ></center></td>
+          </tr>
+        </table>
+
+    </form>
+
+</section>

@@ -1,0 +1,46 @@
+<section id = "showorder">
+    <h1>{{title}}</h1>
+    <div class="topnav" id="myTopnav">
+        <a href="/customer/menu">Menu</a>   
+    </div>
+    {{# if snacks }}
+        <h1>Cart Content</h1>
+            <table id = "productTable">
+                <tr>
+                    <th id = "product">Product</th>
+                    <th id = "quantity">Quantity</th>
+                    <th id = "price">Price</th>
+                    <th id = "action">Action</th>
+                </tr>
+                {{#each snacks}}
+                <tr>
+                    <td>  
+                        <div class ='snack-info'>
+                            <img src="{{this.item.imageurl}}">
+                            <div>
+                                <p>{{this.item.foodName}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{this.quantity}}</td> 
+                    <td>{{this.price}}</td>
+                    <td><a href="/customer/remove/{{this.item.foodId}}" >remove<i class="fa fa-trash" aria-hidden="true"></i></a></td>  
+                </tr>
+                {{/each}}
+            </table>
+
+        <div class="total">
+            <strong>Total: ${{ totalPrice }}</strong>
+        </div>
+        <hr>
+        <div  style="text-align:center">
+        <a href="/customer/confirmOrder" type="button" >Confirm</a>
+        </div>
+    </div>
+    
+        {{ else }}
+    Your shopping cart is empty.
+    {{/if}}
+
+    
+</section>

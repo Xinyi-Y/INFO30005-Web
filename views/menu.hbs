@@ -1,0 +1,62 @@
+<section id="foodList">
+      <script>
+        function logout(){
+            localStorage.clear();
+            document.getElementById("logoutform").submit();
+                        
+        }        
+   </script>
+    <div class="wrapper">
+    <div class="topnav" id="myTopnav">
+        {{#if username}}
+        <a href="/customer/order"> My orders</a> 
+        <a href="javascript:void(0);" onclick="logout();">Logout</a>
+        {{else}}
+        <a href="/customer/login">LogIn</a>
+        {{/if}}
+        <a href="/">Home</a>
+        
+        
+        <h1> Food Van App</h1>
+    </div>
+    <div class = "filter">
+            <form action="/customer/menu" method="get">
+                <button>All</button>
+            </form>
+
+            <form action="/customer/search/drink" method="post">
+                <button name="drinkFilter" value="drink">drinks</button>
+            </form>
+            <form action="/customer/search/snack" method="post">
+                <button name="snackFilter" value="snack">snacks</button>
+            </form>
+    </div>
+    <div class="search">
+        <div id = "searchBar">
+            <form method="post" action="/customer/search">
+                <input type="search" size="10" name="foodName" placeholder="Search.." pattern="[A-Za-z]*" title="letters only" autofocus>
+                <input type="submit" value="Search">
+            </form>
+            <div id = "getButton">
+                <form method="get" action="/customer/placeOrder">
+                        <button>View cart</button>
+                </form>
+            </div>
+        </div>
+
+
+
+    <ul>
+    {{#each foods}}
+    <li> <a href="/customer/snack/{{this.foodId}}"><img src = {{this.imageurl}} alt = "ah"> {{this.foodName}} {{this.price}}$ </a>
+    <form><a href ="/customer/add/{{this.foodId}}" method="get",class="btn btn-default pull-right" role="button"><i
+                class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+            </form> 
+    </li>
+    {{/each}}
+    </ul>
+    </div>
+    </div>
+
+    
+</section>

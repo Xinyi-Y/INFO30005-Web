@@ -1,0 +1,45 @@
+<section>
+    <script>
+        function logout() {
+            localStorage.clear();
+            document.getElementById("logoutform").submit();
+
+        }
+    </script>
+    <div class="wrapper">
+        <div class="topnav" id="myTopnav">
+            {{#if username}}
+            <a href="/customer/order"> My orders</a>
+            <a href="javascript:void(0);" onclick="logout();">Logout</a>
+            {{else}}
+            <a href="/customer/login">LogIn</a>
+            {{/if}}
+            <a href="/">Home</a>
+
+
+            <h1> Food Van App</h1>
+
+
+        </div>
+
+    </div>
+    <h1>Your Location:</h1>
+    <div id="coords" style="width: 100%;min">
+        Loading your location ...
+    </div>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    let coords = document.getElementById('coords');
+                    position = position.coords;
+                    coords.innerHTML = `<p>Latitude : ${position.latitude}, Longitude: ${position.longitude}</p>`
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        getLocation()
+    </script>
+</section>
